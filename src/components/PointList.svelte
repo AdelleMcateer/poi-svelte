@@ -30,7 +30,7 @@
          Longitude
        </th>
         <th>
-         Categories
+         Category
         </th>
     </thead>
     <tbody class="uk-text-left">
@@ -41,6 +41,18 @@
           </td>
           <td>
             {point.description}
+          </td>
+          <td>
+            {point.contributor}
+          </td>
+        <td>
+          {point.latitude}
+        </td>
+        <td>
+           {point.longitude}
+         </td>
+          <td>
+             {point.category}
           </td>
         </tr>
       {/each}
