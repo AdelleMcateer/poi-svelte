@@ -29,6 +29,18 @@ export let mainBar = [
         link: "/#/points",
     },
     {
+        title: "Analysis",
+        icon: "fas fa-chart-line fa-3x",
+        colour: "color:rgb(149, 93, 176)",
+        link: "/#/analysis",
+    },
+    {
+        title: "Point Map",
+        icon: "fas fa-map-marked-alt fa-3x",
+        colour: "rgb(102, 153, 255)",
+        link: "/#/Map",
+    },
+    {
         title: "Categories",
         icon: "fas fa-clipboard-list fa-3x",
         colour: "color:rgb(63, 122, 139)",
@@ -46,6 +58,14 @@ export let mainBar = [
         colour: "color:rgb(156, 70, 128)",
         link: "/#/logout",
     },
+
+    {
+        title: "Analysis",
+        icon: "fas fa-chart-line fa-3x",
+        colour: "color:rgb(149, 93, 176)",
+        link: "/#/analysis",
+    },
+
 ];
 
 export const navBar = writable({

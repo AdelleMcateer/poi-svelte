@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount, getContext } from "svelte";
+  import Coordinates from "./Coordinates.svelte";
+
   const pointService = getContext("PointService");
 
   let categoryList = [];
@@ -11,12 +13,18 @@
   let selectedCategory = 0;
   let errorMessage = "";
 
+  export let lat = 0.0;
+  export let lng = 0.0;
+
   onMount(async () => {
-    categoryList = await pointService.getCategory()
+    categoryList = await pointService.getCategories()
   });
 
-  async function donate() {
-    const success = await pointService.point(name, description, categoryList[selectedCategory])
+  async function point() {
+    const success = await pointService.point(name, description, contributor, categoryList[selectedCategory],
+     {
+           lat: lat,
+           lng: lng})
     if (success) {
 
     } else {
@@ -33,10 +41,20 @@
         <div class="uk-form-controls">
           <input bind:value={name} class="uk-input" id="form-stacked-text" type="string" name="name" placeholder="Poi Name">
         </div>
+         <div class="uk-form-controls">
+              <input bind:value={description} class="uk-input" id="form-stacked-text" type="string" description="description" placeholder="Poi Description">
+        </div>
+
+         <div class="uk-form-controls">
+          <input bind:value={latitude} class="uk-input" id="form-stacked-text" type="number" latitude="latitude" placeholder="latitude">
+           </div>
+            <div class="uk-form-controls">
+              <input bind:value={longitude} class="uk-input" id="form-stacked-text" type="number" longitude="longitude" placeholder="longitude">
+                </div>
       </div>
       <div class="uk-margin">
 
-    <div class=" uk-width-1-2@m">
+<div class=" uk-width-1-2@m">
       <div class="uk-margin uk-text-left">
         <div class="uk-form-label">Select Category </div>
         <div class="uk-form-controls ">

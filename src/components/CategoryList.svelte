@@ -2,7 +2,6 @@
   import {onMount, getContext} from 'svelte'
    const pointService = getContext("PointService");
 
-
   let categoryList;
   onMount(async () => {
     categoryList = await pointService.getCategories()
@@ -19,13 +18,13 @@
       </th>
     </thead>
     <tbody class="uk-text-left">
-            {#if categoryList}
-              {#each categoryList as category}
-                <tr>
-                  <td>{category.name}</td>
-                </tr>
-              {/each}
-            {/if}
+      {#if categoryList}
+        {#each categoryList as category}
+          <tr>
+            <td>{category.name}</td>
+          </tr>
+        {/each}
+      {/if}
     </tbody>
   </table>
 </div>

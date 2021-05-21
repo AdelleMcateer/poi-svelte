@@ -13,10 +13,10 @@ export class PointService {
         }
     }
 
-    async getCategories() {
+    async getcategories() {
         try {
-            const response = await axios(this.baseUrl + "/api/categories")
-            this.categoryList = await response.data();
+            const response = await axios.get(this.baseUrl + "/api/categories");
+            this.categoryList = response.data;
             return this.categoryList;
         } catch (error) {
             return [];
@@ -25,18 +25,19 @@ export class PointService {
 
     async getPoints() {
         try {
-            const response = await axios(this.baseUrl + "/api/points")
-            this.pointList = await response.data();
+            const response = await axios.get(this.baseUrl + "/api/points");
+            this.pointList = response.data;
             return this.pointList;
         } catch (error) {
             return [];
         }
     }
+
     async login(email, password) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
+            axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
-                axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
                 user.set({
                     email: email,
                     token: response.data.token
@@ -55,21 +56,21 @@ export class PointService {
             email: "",
             token: ""
         });
+        this.pointList = [];
         axios.defaults.headers.common["Authorization"] = "";
         localStorage.point = null;
     }
 
-    async point(name, description, contributor, latitude, longitude, category) {
+    async point(amount, method, category, location) {
         try {
-            const addPoint = {
-                name: name,
-                description: description,
-                contributor: contributor,
-                latitude: latitude,
-                longitude: longitude,
-                category: category,
+            const point = {
+                amount: amount,
+                method: method,
+                candidate: candidate,
+                location: location
             };
-            const response = await axios.post(this.baseUrl + "/api/categories/" + category._id + "/points", addPoint);
+            this.pointList.push(point);
+            const response = await axios.post(this.baseUrl + "/api/categories/" + category._id + "/points", point);
             return response.status == 200;
         } catch (error) {
             return false;
@@ -111,24 +112,4 @@ export class PointService {
             return false;
         }
     }
-
-    async updateSettings(firstName, lastName, email, password, id) {
-        try {
-            const userDetails = {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password,
-                _id: id
-            };
-            console.log(userDetails);
-            const response = await axios.put(`${this.baseUrl}/api/users/${id}`, userDetails);
-            const newUser = await response.data;
-            user.set(newUser);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-
 }

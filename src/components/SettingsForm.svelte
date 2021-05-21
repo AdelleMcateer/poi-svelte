@@ -8,10 +8,10 @@
   let password = $user.password
   let message = "";
 
-  const pointService = getContext("PointService");
+  const donationService = getContext("DonationService");
 
   async function save() {
-    let success = await pointService.updateSettings(firstName, lastName, email, password, $user._id)
+    let success = await donationService.updateSettings(firstName, lastName, email, password, $user._id)
     if (success) {
       message = "Settings updated";
     } else {

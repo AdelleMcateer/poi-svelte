@@ -10,7 +10,7 @@
   async function login() {
     let success = await pointService.login(email, password)
     if (success) {
-        push("/categories");
+        push("/point");
       } else {
         email = "";
         password = "";

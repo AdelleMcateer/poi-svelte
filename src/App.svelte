@@ -8,24 +8,25 @@
     import Points from "./pages/Points.svelte";
     import Point from "./pages/Point.svelte";
     import Settings from "./pages/Settings.svelte";
+    import Map from "./pages/Map.svelte"
     import Navigator from "./components/Navigator.svelte";
-    import Router from "svelte-spa-router";
+   import Router from "svelte-spa-router";
 
     setContext("PointService", new PointService("http://localhost:4000"));
 
    let routes = {
-     "/" : Main,
-     "/login": Login,
-      "/signup" : Signup,
-     "/categories": Categories,
-     "/points": Points,
-     "/point": Point,
-     "/settings" : Settings,
-     "/logout" : Main
+       "/" : Main,
+       "/login": Login,
+       "/signup" : Signup,
+       "/categories": Categories,
+       "/points": Points,
+       "/point": Point,
+       "/settings" : Settings,
+       "/logout" : Main
    }
   </script>
 
-  <div class="uk-container">
-    <Navigator/>
-    <Router {routes}/>
-  </div>
+<div class="uk-container">
+  <Navigator/>
+  <Router {routes}/>
+</div>

@@ -52,7 +52,7 @@
            {point.longitude}
          </td>
           <td>
-             {point.category}
+            {point.categories.name}
           </td>
         </tr>
       {/each}
