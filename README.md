@@ -1,4 +1,4 @@
-## poi-client-svelte
+## poi-svelte
 
 Student Name: Adelle McAteer
 
