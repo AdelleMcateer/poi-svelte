@@ -66,7 +66,7 @@ export class PointService {
             const point = {
                 amount: amount,
                 method: method,
-                candidate: candidate,
+                category: category,
                 location: location
             };
             this.pointList.push(point);
