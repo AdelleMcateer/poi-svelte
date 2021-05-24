@@ -13,7 +13,7 @@ export class PointService {
         }
     }
 
-    async getcategories() {
+    async getCategories() {
         try {
             const response = await axios.get(this.baseUrl + "/api/categories");
             this.categoryList = response.data;

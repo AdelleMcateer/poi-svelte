@@ -9,10 +9,11 @@
   });
 </script>
 
+
 <h3 class="uk-heading-divider">
   Point List </h3>
 <div class="uk-table uk-table-divider">
-  <table class="uk-table">
+<table class="uk-table uk-table-striped">
     <thead>
       <th>
         Name
@@ -52,7 +53,7 @@
            {point.longitude}
          </td>
           <td>
-            {point.categories.name}
+            {point.categories}
           </td>
         </tr>
       {/each}

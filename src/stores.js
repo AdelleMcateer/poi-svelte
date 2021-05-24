@@ -58,14 +58,6 @@ export let mainBar = [
         colour: "color:rgb(156, 70, 128)",
         link: "/#/logout",
     },
-
-    {
-        title: "Analysis",
-        icon: "fas fa-chart-line fa-3x",
-        colour: "color:rgb(149, 93, 176)",
-        link: "/#/analysis",
-    },
-
 ];
 
 export const navBar = writable({
